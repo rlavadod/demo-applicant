@@ -2,12 +2,11 @@ spring:
   application:
     name: demo-applicant
   datasource:
-    url: jdbc:h2:mem:testdb
-    driverClassName: org.h2.Driver
-    username: sa
+    url: jdbc:mysql://192.168.174.130:3307/dbtest
+    driverClassName: com.mysql.cj.jdbc.Driver
+    username: user
     password: pass
   jpa:
-    database-platform: org.hibernate.dialect.H2Dialect
-  h2:
-    console:
-      enabled: true
+    show-sql: true
+    hibernate:
+      ddl-auto: none
