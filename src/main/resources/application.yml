@@ -2,10 +2,10 @@ spring:
   application:
     name: demo-applicant
   datasource:
-    url: jdbc:mysql://192.168.174.130:3307/dbtest
+    url: jdbc:mysql://dbmysqlrsld.mysql.database.azure.com:3306/testdb
     driverClassName: com.mysql.cj.jdbc.Driver
-    username: user
-    password: pass
+    username: adminrsld
+    password: Santrsld$.$
   jpa:
     show-sql: true
     hibernate:
