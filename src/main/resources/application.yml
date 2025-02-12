@@ -4,8 +4,8 @@ spring:
   datasource:
     url: jdbc:mysql://dbmysqlrsld.mysql.database.azure.com:3306/testdb
     driverClassName: com.mysql.cj.jdbc.Driver
-    username: adminrsld
-    password: Santrsld$.$
+    username: ${USER_DATABASE_MYSQL}
+    password: ${PASS_DATABASE_MYSQL}
   jpa:
     show-sql: true
     hibernate:
