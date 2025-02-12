@@ -15,3 +15,6 @@ springdoc:
     path: /applicant-management/v1/api-docs
   swagger-ui:
     path: /swagger-ui.html
+logging.level:
+  org.springframework.web: DEBUG
+  org.hibernate: ERROR

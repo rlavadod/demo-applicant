@@ -9,6 +9,7 @@ import io.swagger.v3.oas.annotations.media.ExampleObject;
 import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
+import jakarta.validation.Valid;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -43,7 +44,7 @@ public class ApplicantController {
       content = @Content(mediaType = "application/json",
           schema = @Schema(implementation = Applicant.class),
           examples = @ExampleObject(value = "{\"name\":\"Carlos\",\"lastname\":\"Alcantara\",\"birthdate\":\"1980-02-09\"}")))
-                                         @RequestBody Applicant applicant) {
+                                         @RequestBody @Valid Applicant applicant) {
     return new ResponseEntity<>(service.saveApplicant(applicant), HttpStatus.CREATED);
   }
 
