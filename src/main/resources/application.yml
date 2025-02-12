@@ -10,3 +10,8 @@ spring:
     show-sql: true
     hibernate:
       ddl-auto: none
+springdoc:
+  api-docs:
+    path: /applicant-management/v1/api-docs
+  swagger-ui:
+    path: /swagger-ui.html
