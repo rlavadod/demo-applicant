@@ -10,11 +10,16 @@ spring:
     show-sql: true
     hibernate:
       ddl-auto: none
+application:
+  security:
+    jwt:
+      secret-key: ${APP_JWT_SECRET_KEY}
+      expiration: 300000
+      refresh-token:
+        expiration: 1200000
 springdoc:
   api-docs:
-    path: /applicant-management/v1/api-docs
-  swagger-ui:
-    path: /swagger-ui.html
+    path: /swagger-ui/api-docs
 logging.level:
   org.springframework.web: DEBUG
   org.hibernate: ERROR
