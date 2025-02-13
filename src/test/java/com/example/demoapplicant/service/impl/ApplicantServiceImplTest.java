@@ -11,6 +11,7 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.junit.jupiter.MockitoExtension;
+import org.springframework.amqp.rabbit.core.RabbitTemplate;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -20,6 +21,9 @@ class ApplicantServiceImplTest {
 
   @Mock
   private ApplicantRepository repository;
+
+  @Mock
+  private RabbitTemplate template;
 
   @InjectMocks
   private ApplicantServiceImpl service;
@@ -31,6 +35,9 @@ class ApplicantServiceImplTest {
     ApplicantEntity entity = MockUtil.obtainApplicantEntity();
     Mockito.when(repository.save(Mockito.any(ApplicantEntity.class)))
         .thenReturn(entity);
+    Mockito.doNothing()
+        .when(template)
+        .convertAndSend(Mockito.anyString(), Mockito.any(ApplicantEntity.class));
     //Act
     Applicant response = service.saveApplicant(applicant);
     //Assert

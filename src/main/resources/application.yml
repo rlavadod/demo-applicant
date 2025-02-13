@@ -10,6 +10,11 @@ spring:
     show-sql: true
     hibernate:
       ddl-auto: none
+  rabbitmq:
+    host: 192.168.174.130
+    port: 5672
+    username: user
+    password: pass
 application:
   security:
     jwt:

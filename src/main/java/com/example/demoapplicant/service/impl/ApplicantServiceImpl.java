@@ -1,10 +1,12 @@
 package com.example.demoapplicant.service.impl;
 
+import com.example.demoapplicant.config.RabbitMQConfig;
 import com.example.demoapplicant.model.api.Applicant;
 import com.example.demoapplicant.model.entity.ApplicantEntity;
 import com.example.demoapplicant.repository.ApplicantRepository;
 import com.example.demoapplicant.service.ApplicantService;
 import com.example.demoapplicant.util.Util;
+import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -16,9 +18,13 @@ public class ApplicantServiceImpl implements ApplicantService {
   @Autowired
   private ApplicantRepository repository;
 
+  @Autowired
+  private RabbitTemplate template;
+
   @Override
   public Applicant saveApplicant(Applicant applicant) {
     ApplicantEntity entity = repository.save(this.toEntity(applicant));
+    template.convertAndSend(RabbitMQConfig.EXCHANGE, entity);
     return this.toModel(entity);
   }
 
